@@ -6,7 +6,7 @@ import { renderNotFound } from "./pages/notfound.js";
 
 //creating a map of routers:
 const routes = {
-  "/": renderHome,
+  "/home": renderHome,
   "/notes": renderNotes,
   "/new": renderNewNote,
   "/about": renderAbout,
@@ -17,5 +17,8 @@ const routes = {
 export function router() {
   const path = window.location.pathname;
   const render = routes[path] || renderNotFound;
-  router();
+  render();
+}
+if (path === "/") {
+  window.history.replaceState(null, null, "/home");
 }
